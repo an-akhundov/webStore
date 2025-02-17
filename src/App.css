@@ -1,0 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+.main {
+  display: flex;
+}
+
+.main-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+@media (min-width: 90rem) {
+  .main-page {
+    width: 60%;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Dynalight&display=swap");
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100vw;
+  height: 7rem;
+  background: linear-gradient(#2a2722, #413c35);
+}
+
+.footer__links {
+  display: flex;
+  padding: 0.5rem;
+}
+
+.footer__links-link {
+  margin: 0;
+  padding: 0;
+  height: 4rem;
+  width: 4rem;
+  margin: 0.5rem;
+}
+
+.footer__sign {
+  font-family: "Dynalight", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 2rem;
+}

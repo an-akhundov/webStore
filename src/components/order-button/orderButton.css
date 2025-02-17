@@ -1,0 +1,54 @@
+.order-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem auto;
+  padding: 0.5rem 8rem;
+  border-radius: 8px;
+  background: linear-gradient(#faca71, #fae571);
+  color: #1f1d25;
+  font-size: 1.5rem;
+  letter-spacing: 0.1rem;
+  max-width: 18rem;
+  animation: pulse 2s infinite;
+  cursor: pointer;
+  font-family: "Open Sans", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  position: relative;
+}
+
+.order-button__img {
+  width: 3rem;
+  height: 3rem;
+}
+
+.order-button__count {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  background-color: rgb(0, 255, 42);
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 50%;
+  height: 1.2rem;
+  width: 1.2rem;
+  font-size: 0.8rem;
+  left: 9.5rem;
+}
+
+.visible {
+  display: flex;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(250, 229, 113, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(250, 229, 113, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(250, 229, 113, 0);
+  }
+}

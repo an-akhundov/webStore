@@ -1,0 +1,9 @@
+.header-brand {
+  justify-self: center;
+}
+
+@media (min-width: 90rem) {
+  .header-brand {
+    justify-self: center;
+  }
+}

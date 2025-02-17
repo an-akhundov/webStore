@@ -1,0 +1,18 @@
+.shelf {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  min-height: 800px;
+}
+
+.main-page .shelf {
+  width: 100%;
+}
+
+@media (min-width: 90rem) {
+  .shelf {
+    width: 60%;
+  }
+}
