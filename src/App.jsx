@@ -8,6 +8,7 @@ import Wheels from "./pages/Wheels";
 import Batteries from "./pages/Batteries";
 import Spares from "./pages/Spares";
 import ProductInfo from "./pages/ProductInfo";
+import Admin from "./pages/Admin";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="Batteries" element={<Batteries />} />
           <Route path="Spares" element={<Spares />} />
           <Route path="ProductInfo" element={<ProductInfo />} />
+          <Route path="Admin" element={<Admin />} />
         </Route>
       </Routes>
     </BrowserRouter>
