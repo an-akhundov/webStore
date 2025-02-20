@@ -8,18 +8,17 @@ import Brand from "../brand/Brand";
 import MenuButton from "../menu-button/MenuButton";
 import MobileNav from "../mobile-nav/MobileNav";
 import CartModal from "../cart-modal/CartModal.jsx";
-import { useState, useRef, useContext } from "react";
+import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { CartContext } from "../../store/shopping-cart-context.jsx";
 import ferImage from "../../assets/fer.webp";
 import lambaImg from "../../assets/lamba.jpg";
+import { useSelector } from "react-redux";
 
 export default function Header({ ...props }) {
   const [mobileNavActive, setMobileNavActive] = useState(false);
   const navigate = useNavigate();
   const modal = useRef();
-  const ctxValue = useContext(CartContext);
-  const cartQuantity = ctxValue.items.length;
+  const cartQuantity = useSelector((state) => state.cart.items).length;
 
   function handleOpenCartClick() {
     modal.current.open();

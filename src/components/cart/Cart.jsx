@@ -1,11 +1,12 @@
-import { useContext } from "react";
-import { CartContext } from "../../store/shopping-cart-context.jsx";
+import { useDispatch, useSelector } from "react-redux";
+import { cartActions } from "../../store/storeSlices/cartSlice";
 import "./cart.css";
 
 export default function Cart() {
-  const cardCtx = useContext(CartContext);
+  const items = useSelector((state) => state.cart.items);
+  const dispatch = useDispatch();
 
-  const totalPrice = cardCtx.items.reduce(
+  const totalPrice = items.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
   );
@@ -13,10 +14,10 @@ export default function Cart() {
 
   return (
     <div id="cart">
-      {cardCtx.items.length === 0 && <p>No items in cart!</p>}
-      {cardCtx.items.length > 0 && (
+      {items.length === 0 && <p>No items in cart!</p>}
+      {items.length > 0 && (
         <ul id="cart-items">
-          {cardCtx.items.map((item) => {
+          {items.map((item) => {
             const formattedPrice = `$${item.price.toFixed(2)}`;
 
             return (
@@ -27,12 +28,28 @@ export default function Cart() {
                 </div>
                 <div className="cart-item-actions">
                   <button
-                    onClick={() => cardCtx.updateItemQuanity(item.id, -1)}
+                    onClick={() =>
+                      dispatch(
+                        cartActions.updateItemQuantity({
+                          productId: item.id,
+                          amount: -1,
+                        })
+                      )
+                    }
                   >
                     -
                   </button>
                   <span>{item.quantity}</span>
-                  <button onClick={() => cardCtx.updateItemQuanity(item.id, 1)}>
+                  <button
+                    onClick={() =>
+                      dispatch(
+                        cartActions.updateItemQuantity({
+                          productId: item.id,
+                          amount: 1,
+                        })
+                      )
+                    }
+                  >
                     +
                   </button>
                 </div>

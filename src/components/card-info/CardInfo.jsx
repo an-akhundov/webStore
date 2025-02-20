@@ -1,14 +1,16 @@
 import { GOODS } from "../../data";
-import { useContext, useState } from "react";
-import { CartContext } from "../../store/shopping-cart-context.jsx";
+import { useState } from "react";
 import MenuButton from "../menu-button/MenuButton.jsx";
 import "./cardInfo.css";
 import plusImg from "../../assets/plus.png";
 import minusImg from "../../assets/minus.png";
+import { useDispatch, useSelector } from "react-redux";
+import { cartActions } from "../../store/storeSlices/cartSlice.js";
 
 export default function CardInfo() {
-  const ctxValue = useContext(CartContext);
-  let product = GOODS.find((product) => product.id === ctxValue.selectedItem);
+  const selectedItem = useSelector((state) => state.cart.selectedItem);
+  const dispatch = useDispatch();
+  let product = GOODS.find((product) => product.id === selectedItem);
   const [quantity, setQuantity] = useState(0);
 
   if (!product) {
@@ -31,7 +33,7 @@ export default function CardInfo() {
 
   function handleAdd() {
     for (let i = 0; i < quantity; i++) {
-      ctxValue.addItemToCard(ctxValue.selectedItem);
+      dispatch(cartActions.addItemToCard(selectedItem));
     }
     setQuantity(0);
   }

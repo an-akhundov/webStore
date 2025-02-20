@@ -1,15 +1,15 @@
 import "./goodsCard.css";
 import MenuButton from "../menu-button/MenuButton";
-import { useContext } from "react";
-import { CartContext } from "../../store/shopping-cart-context.jsx";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { cartActions } from "../../store/storeSlices/cartSlice";
 
 export default function ({ imgUrl, name, price, id }) {
-  const ctxValue = useContext(CartContext);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   function handleNavigate() {
-    ctxValue.selectItem(id);
+    dispatch(cartActions.selectItem(id));
     navigate("/ProductInfo");
   }
 
@@ -20,7 +20,7 @@ export default function ({ imgUrl, name, price, id }) {
       <p className="card__price">{`$${price}`}</p>
       <MenuButton
         classN="card-button"
-        onClick={() => ctxValue.addItemToCard(id)}
+        onClick={() => dispatch(cartActions.addItemToCard(id))}
       >
         Add to cart
       </MenuButton>
