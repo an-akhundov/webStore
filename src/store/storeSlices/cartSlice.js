@@ -24,6 +24,7 @@ const addItemToCard = (state, action) => {
       quantity: 1,
     });
   }
+  localStorage.setItem("cart", JSON.stringify(state));
 };
 
 const updateItemQuantity = (state, action) => {
@@ -42,16 +43,24 @@ const updateItemQuantity = (state, action) => {
   } else {
     state.items[updatedItemIndex] = updatedItem;
   }
+
+  localStorage.setItem("cart", JSON.stringify(state));
 };
 
 const selectItem = (state, action) => {
   state.selectedItem = action.payload;
+  localStorage.setItem("cart", JSON.stringify(state));
 };
 
-const initialState = {
+let initialState = {
   selectedItem: 0,
   items: [],
 };
+
+const data = JSON.parse(localStorage.getItem("cart"));
+if (data) {
+  initialState = data;
+}
 
 const cartSlice = createSlice({
   name: "cart",

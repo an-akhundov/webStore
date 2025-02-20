@@ -8,10 +8,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../../store/storeSlices/cartSlice.js";
 
 export default function CardInfo() {
-  const selectedItem = useSelector((state) => state.cart.selectedItem);
-  const dispatch = useDispatch();
+  let selectedItem = useSelector((state) => state.cart.selectedItem);
   let product = GOODS.find((product) => product.id === selectedItem);
+  const dispatch = useDispatch();
   const [quantity, setQuantity] = useState(0);
+
+  if (!selectedItem) {
+    selectedItem = JSON.parse(localStorage.getItem("item")).id;
+  }
 
   if (!product) {
     product = JSON.parse(localStorage.getItem("item"));
