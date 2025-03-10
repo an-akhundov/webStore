@@ -20,6 +20,8 @@ app.get("/goods", async (req, res) => {
   res.json(JSON.parse(meals));
 });
 
+// app.get("/admin", async (req,res) =>)
+
 app.post("/orders", async (req, res) => {
   const orderData = req.body.order;
 

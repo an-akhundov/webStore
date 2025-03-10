@@ -1,4 +1,3 @@
-import { GOODS } from "../../data";
 import { useState } from "react";
 import MenuButton from "../menu-button/MenuButton.jsx";
 import "./cardInfo.css";
@@ -7,15 +6,14 @@ import minusImg from "../../assets/minus.png";
 import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../../store/storeSlices/cartSlice.js";
 
-export default function CardInfo() {
-  let selectedItem = useSelector((state) => state.cart.selectedItem);
-  let product = GOODS.find((product) => product.id === selectedItem);
+export default function CardInfo({ product }) {
+  //let selectedItem = useSelector((state) => state.cart.selectedItem);
   const dispatch = useDispatch();
   const [quantity, setQuantity] = useState(0);
 
-  if (!selectedItem) {
-    selectedItem = JSON.parse(localStorage.getItem("item")).id;
-  }
+  // if (!selectedItem) {
+  //   selectedItem = JSON.parse(localStorage.getItem("item")).id;
+  // }
 
   if (!product) {
     product = JSON.parse(localStorage.getItem("item"));
@@ -24,7 +22,7 @@ export default function CardInfo() {
   }
 
   function increaceQuantity() {
-    if (quantity < product.stock) {
+    if (quantity < 20) {
       setQuantity((prev) => prev + 1);
     }
   }
@@ -37,26 +35,34 @@ export default function CardInfo() {
 
   function handleAdd() {
     for (let i = 0; i < quantity; i++) {
-      dispatch(cartActions.addItemToCard(selectedItem));
+      dispatch(
+        cartActions.addItemToCard({
+          image: product.image,
+          name: product.name,
+          price: product.price,
+          id: product.id,
+        })
+      );
     }
     setQuantity(0);
   }
 
   return (
     <div className="card-info">
-      <img src={product.imgUrl} alt="" className="card-info__image" />
+      <img
+        src={`http://localhost:3000/${product.image}`}
+        alt=""
+        className="card-info__image"
+      />
       <div className="card-info__product-info">
         <h2 className="card-info__product-info__name">{product.name}</h2>
-        <p className="card-info__product-info__description">
-          {product.description}
-        </p>
         <p>
           <span className="card-info__product-info__price"> Price :</span> $
           {product.price}
         </p>
         <p>
           <span className="card-info__product-info__stock">In Stock :</span>{" "}
-          {product.stock}
+          {20}
         </p>
         <div className="card-info__product-info__buttons">
           <MenuButton classN="card-info__button" onClick={increaceQuantity}>

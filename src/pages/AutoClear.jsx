@@ -3,18 +3,16 @@ import SectionName from "../components/section-name/SectionName";
 import Goods from "../components/goods/Goods";
 import { useRouteLoaderData } from "react-router-dom";
 
-export default function CarPaints() {
+export default function AutoClear() {
   const data = useRouteLoaderData("root");
-  const paints = data.paint;
+  const clear = data.clear;
 
   return (
     <>
-      <div className="main-page">
-        <Shelf>
-          <SectionName text="Car Paints" />
-          <Goods goods={paints} isProduct />
-        </Shelf>
-      </div>
+      <Shelf>
+        <SectionName text="Auto Clear" />
+        <Goods goods={clear} isProduct />
+      </Shelf>
     </>
   );
 }

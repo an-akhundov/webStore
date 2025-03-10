@@ -1,28 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { GOODS } from "../../data";
 
 const addItemToCard = (state, action) => {
   const existingCartItemIndex = state.items.findIndex(
-    (cartItem) => cartItem.id === action.payload
+    (cartItem) => cartItem.id === action.payload.id
   );
 
   const existingCartItem = state.items[existingCartItemIndex];
 
   if (existingCartItem) {
-    const updatedItem = {
-      ...existingCartItem,
-      quantity: existingCartItem.quantity + 1,
-    };
-    state.items[existingCartItemIndex] = updatedItem;
+    state.items[existingCartItemIndex].quantity++;
   } else {
-    const product = GOODS.find((product) => product.id === action.payload);
-    state.items.push({
-      id: action.payload,
-      name: product.name,
-      price: product.price,
-      img: product.imgUrl,
-      quantity: 1,
-    });
+    state.items.push({ ...action.payload, quantity: 1 });
   }
   localStorage.setItem("cart", JSON.stringify(state));
 };

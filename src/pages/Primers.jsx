@@ -3,18 +3,16 @@ import SectionName from "../components/section-name/SectionName";
 import Goods from "../components/goods/Goods";
 import { useRouteLoaderData } from "react-router-dom";
 
-export default function CarPaints() {
+export default function Primers() {
   const data = useRouteLoaderData("root");
-  const paints = data.paint;
+  const primers = data.primer;
 
   return (
     <>
-      <div className="main-page">
-        <Shelf>
-          <SectionName text="Car Paints" />
-          <Goods goods={paints} isProduct />
-        </Shelf>
-      </div>
+      <Shelf>
+        <SectionName text="Primers" />
+        <Goods goods={primers} isProduct />
+      </Shelf>
     </>
   );
 }

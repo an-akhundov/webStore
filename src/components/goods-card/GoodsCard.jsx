@@ -4,26 +4,42 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { cartActions } from "../../store/storeSlices/cartSlice";
 
-export default function ({ imgUrl, name, price, id }) {
+export default function ({ image, name, price, id, isProduct }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   function handleNavigate() {
     dispatch(cartActions.selectItem(id));
-    navigate("/ProductInfo");
+    navigate(`${id}`);
   }
 
   return (
     <div className="card">
-      <img src={imgUrl} alt="" className="card__img" onClick={handleNavigate} />
+      <img
+        src={`http://localhost:3000/${image}`}
+        alt=""
+        className="card__img"
+        onClick={isProduct ? handleNavigate : undefined}
+      />
       <h3 className="card__name">{name}</h3>
-      <p className="card__price">{`$${price}`}</p>
-      <MenuButton
-        classN="card-button"
-        onClick={() => dispatch(cartActions.addItemToCard(id))}
-      >
-        Add to cart
-      </MenuButton>
+      <p className="card__price">{`${price} AZN`}</p>
+      {isProduct && (
+        <MenuButton
+          classN="card-button"
+          onClick={() =>
+            dispatch(
+              cartActions.addItemToCard({
+                image,
+                name,
+                price,
+                id,
+              })
+            )
+          }
+        >
+          Add to cart
+        </MenuButton>
+      )}
     </div>
   );
 }

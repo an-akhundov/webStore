@@ -26,31 +26,52 @@ export default function MobileNav({ isNavActive, closeNav, onCartClick }) {
         </MenuButton>
         <MenuButton
           classN="mobile-button"
-          onClick={() => changeRoute("/AutoChemical")}
+          onClick={() => changeRoute("/AutoClear")}
           closeNav={closeNav}
         >
-          Auto Chemical goods
+          Auto Clear
         </MenuButton>
         <MenuButton
           classN="mobile-button"
-          onClick={() => changeRoute("/Wheels")}
+          onClick={() => changeRoute("/Primers")}
           closeNav={closeNav}
         >
-          Wheels
+          Primers
         </MenuButton>
         <MenuButton
           classN="mobile-button"
-          onClick={() => changeRoute("/Batteries")}
+          onClick={() => changeRoute("/Hardeners")}
           closeNav={closeNav}
         >
-          Batteries
+          Hardeners
         </MenuButton>
         <MenuButton
           classN="mobile-button"
-          onClick={() => changeRoute("/Spares")}
+          onClick={() => changeRoute("/Polish")}
           closeNav={closeNav}
         >
-          Spares
+          Polish
+        </MenuButton>
+        <MenuButton
+          classN="mobile-button"
+          onClick={() => changeRoute("/Solvents")}
+          closeNav={closeNav}
+        >
+          Solvents
+        </MenuButton>
+        <MenuButton
+          classN="mobile-button"
+          onClick={() => changeRoute("/Putties")}
+          closeNav={closeNav}
+        >
+          Putties
+        </MenuButton>
+        <MenuButton
+          classN="mobile-button"
+          onClick={() => changeRoute("/ColorMatching")}
+          closeNav={closeNav}
+        >
+          Color Matching
         </MenuButton>
       </ol>
     </nav>

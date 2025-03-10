@@ -14,10 +14,11 @@ import ferImage from "../../assets/fer.webp";
 import lambaImg from "../../assets/lamba.jpg";
 import { useSelector } from "react-redux";
 
-export default function Header({ ...props }) {
+export default function Header({ data }) {
   const [mobileNavActive, setMobileNavActive] = useState(false);
   const navigate = useNavigate();
   const modal = useRef();
+  const search = useRef();
   const cartQuantity = useSelector((state) => state.cart.items).length;
 
   function handleOpenCartClick() {
@@ -43,6 +44,35 @@ export default function Header({ ...props }) {
     navigate(`${route}`);
   }
 
+  function searchProduct() {
+    const searchArr = [];
+
+    Object.keys(data).map((productsName) => {
+      const arr = data[productsName];
+
+      arr.map((product) => {
+        if (
+          product.name
+            .toLowerCase()
+            .trim()
+            .split(" ")
+            .join("")
+            .includes(
+              search.current.value.toLowerCase().trim().split(" ").join("")
+            )
+        ) {
+          searchArr.push(product);
+        }
+      });
+    });
+
+    navigate("/Search", {
+      state: {
+        data: searchArr,
+      },
+    });
+  }
+
   return (
     <>
       <div
@@ -62,12 +92,13 @@ export default function Header({ ...props }) {
         <div className="header_wrap">
           <Brand></Brand>
           <div className="header__search">
-            <input type="text" className="header__search-input" />
+            <input type="text" className="header__search-input" ref={search} />
             <a src="#" className="header__search-button">
               <img
                 src={searchImg}
                 alt=""
                 className="header__search-button--img"
+                onClick={searchProduct}
               />
             </a>
           </div>
@@ -103,27 +134,45 @@ export default function Header({ ...props }) {
             </MenuButton>
             <MenuButton
               classN="header-button"
-              onClick={() => changeRoute("/AutoChemical")}
+              onClick={() => changeRoute("/AutoClear")}
             >
-              Auto Chemical goods
+              Auto Clear
             </MenuButton>
             <MenuButton
               classN="header-button"
-              onClick={() => changeRoute("/Wheels")}
+              onClick={() => changeRoute("/Primers")}
             >
-              Wheels
+              Primers
             </MenuButton>
             <MenuButton
               classN="header-button"
-              onClick={() => changeRoute("/Batteries")}
+              onClick={() => changeRoute("/Hardeners")}
             >
-              Batteries
+              Hardeners
             </MenuButton>
             <MenuButton
               classN="header-button"
-              onClick={() => changeRoute("/Spares")}
+              onClick={() => changeRoute("/Polish")}
             >
-              Spares
+              Polish
+            </MenuButton>
+            <MenuButton
+              classN="header-button"
+              onClick={() => changeRoute("/Solvents")}
+            >
+              Solvents
+            </MenuButton>
+            <MenuButton
+              classN="header-button"
+              onClick={() => changeRoute("/Putties")}
+            >
+              Putties
+            </MenuButton>
+            <MenuButton
+              classN="header-button"
+              onClick={() => changeRoute("/ColorMatching")}
+            >
+              Color Matching
             </MenuButton>
           </nav>
         </div>

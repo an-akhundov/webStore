@@ -66,12 +66,9 @@
 
   .card-info__image {
     width: 32rem;
-    height: 40rem;
+    height: 30rem;
     border: 1px solid #faca71;
     border-radius: 1rem;
     margin: 1rem;
   }
-}
-
-@media (min-width: 90rem) {
 }
