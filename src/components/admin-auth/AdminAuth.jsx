@@ -1,13 +1,10 @@
 import "./adminAuth.css";
 import CustomInput from "../custom-input/CustomInput.jsx";
 import MenuButton from "../menu-button/MenuButton.jsx";
-import AdminAddGoods from "../admin-add-goods/AdminAddGoods.jsx";
+import AdminMain from "../admin-main/AdminMain.jsx";
 import { useRef, useState } from "react";
 
-const LOGIN = "Anar";
-const PASSWORD = "2250602";
-
-export default function AdminAuth() {
+export default function AdminAuth({ adminCredentials, orders }) {
   const loginRef = useRef();
   const passwordRef = useRef();
   const [isValid, setIsValid] = useState({
@@ -17,8 +14,8 @@ export default function AdminAuth() {
 
   function handleLogin() {
     if (
-      loginRef.current.value === LOGIN &&
-      passwordRef.current.value === PASSWORD
+      loginRef.current.value === adminCredentials.login &&
+      passwordRef.current.value === adminCredentials.password
     ) {
       setIsValid((prev) => {
         return {
@@ -53,7 +50,7 @@ export default function AdminAuth() {
           </MenuButton>
         </form>
       )}
-      {isValid.valid && <AdminAddGoods />}
+      {isValid.valid && <AdminMain orders={orders} />}
     </>
   );
 }

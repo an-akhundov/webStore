@@ -1,0 +1,13 @@
+.order-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  background-color: azure;
+  border: 1px solid black;
+  border-radius: 2rem;
+  padding: 0;
+  width: 60rem;
+  min-height: 40rem;
+  justify-content: center;
+  align-items: center;
+}

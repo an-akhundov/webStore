@@ -35,6 +35,11 @@ const updateItemQuantity = (state, action) => {
   localStorage.setItem("cart", JSON.stringify(state));
 };
 
+const clearCart = (state, action) => {
+  state.items = [];
+  localStorage.removeItem("cart");
+};
+
 const selectItem = (state, action) => {
   state.selectedItem = action.payload;
   localStorage.setItem("cart", JSON.stringify(state));
@@ -57,6 +62,7 @@ const cartSlice = createSlice({
     addItemToCard,
     updateItemQuantity,
     selectItem,
+    clearCart,
   },
 });
 

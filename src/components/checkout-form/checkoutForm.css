@@ -1,0 +1,35 @@
+.checkout-form {
+  max-width: 40rem;
+  margin: 2rem auto;
+}
+
+.checkout-form label,
+.checkout-form input,
+.checkout-form textarea {
+  display: block;
+  width: 100%;
+}
+
+.checkout-form input,
+.checkout-form textarea {
+  font: inherit;
+  padding: 0.25rem;
+}
+
+.checkout-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+.checkout-actions button {
+  font: inherit;
+  cursor: pointer;
+  padding: 0.5rem 1.5rem;
+  border-radius: 4px;
+  background-color: rgb(240, 138, 138);
+}
+
+.checkout-actions button:hover {
+  background-color: rgb(116, 224, 112);
+}

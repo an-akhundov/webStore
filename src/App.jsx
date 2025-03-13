@@ -14,7 +14,9 @@ import ProductInfo from "./pages/ProductInfo";
 import Admin from "./pages/Admin";
 import ErrorPage from "./pages/Error";
 import SearchPage from "./pages/SearchPage";
+import CheckoutPage from "./pages/Checkout";
 import { loader } from "./pages/Layout";
+import { loader as adminLoader } from "./pages/Admin";
 
 function App() {
   const router = createBrowserRouter([
@@ -38,6 +40,7 @@ function App() {
         { path: "Putties", element: <Putties /> },
         { path: "Search", element: <SearchPage /> },
         { path: "ColorMatching", element: <ColorMatching /> },
+        { path: "Checkout", element: <CheckoutPage /> },
         { path: "CarPaints/:id", element: <ProductInfo /> },
         { path: "AutoClear/:id", element: <ProductInfo /> },
         { path: "Primers/:id", element: <ProductInfo /> },
@@ -45,7 +48,7 @@ function App() {
         { path: "Polish/:id", element: <ProductInfo /> },
         { path: "Solvents/:id", element: <ProductInfo /> },
         { path: "Putties/:id", element: <ProductInfo /> },
-        { path: "Admin", element: <Admin /> },
+        { path: "Admin", element: <Admin />, loader: adminLoader },
       ],
     },
   ]);

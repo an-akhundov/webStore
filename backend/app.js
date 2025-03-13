@@ -10,7 +10,7 @@ app.use(express.static("public"));
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, DELETE");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
   next();
 });
@@ -20,7 +20,18 @@ app.get("/goods", async (req, res) => {
   res.json(JSON.parse(meals));
 });
 
-// app.get("/admin", async (req,res) =>)
+app.get("/admin", async (req, res) => {
+  const adminCredentials = await fs.readFile("./data/admin.json", "utf-8");
+  res.json(JSON.parse(adminCredentials));
+});
+
+app.get("/orders", async (req, res) => {
+  const data = await fs.readFile("./data/orders.json");
+
+  const orders = JSON.parse(data);
+
+  res.status(200).json({ orders });
+});
 
 app.post("/orders", async (req, res) => {
   const orderData = req.body.order;
@@ -38,16 +49,11 @@ app.post("/orders", async (req, res) => {
     !orderData.customer.email.includes("@") ||
     orderData.customer.name === null ||
     orderData.customer.name.trim() === "" ||
-    orderData.customer.street === null ||
-    orderData.customer.street.trim() === "" ||
-    orderData.customer["postal-code"] === null ||
-    orderData.customer["postal-code"].trim() === "" ||
-    orderData.customer.city === null ||
-    orderData.customer.city.trim() === ""
+    orderData.customer.number === null ||
+    orderData.customer.number.trim() === ""
   ) {
     return res.status(400).json({
-      message:
-        "Missing data: Email, name, street, postal code or city is missing.",
+      message: "Missing data: Email, name or number",
     });
   }
 
@@ -60,6 +66,16 @@ app.post("/orders", async (req, res) => {
   allOrders.push(newOrder);
   await fs.writeFile("./data/orders.json", JSON.stringify(allOrders));
   res.status(201).json({ message: "Order created!" });
+});
+
+app.delete("/orders/:id", async (req, res) => {
+  const deleteId = req.params.id;
+  const storedData = JSON.parse(
+    await fs.readFile("./data/orders.json", "utf8")
+  );
+  const updatedData = storedData.filter((order) => order.id !== deleteId);
+  await fs.writeFile("./data/orders.json", JSON.stringify(updatedData));
+  res.status(201).json({ message: "Order deleted." });
 });
 
 app.use((req, res) => {

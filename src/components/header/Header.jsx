@@ -8,17 +8,21 @@ import Brand from "../brand/Brand";
 import MenuButton from "../menu-button/MenuButton";
 import MobileNav from "../mobile-nav/MobileNav";
 import CartModal from "../cart-modal/CartModal.jsx";
+import { langActions } from "../../store/storeSlices/langSlice.js";
 import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import ferImage from "../../assets/fer.webp";
 import lambaImg from "../../assets/lamba.jpg";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function Header({ data }) {
   const [mobileNavActive, setMobileNavActive] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const language = useSelector((state) => state.lang.language);
   const modal = useRef();
   const search = useRef();
+  const select = useRef();
   const cartQuantity = useSelector((state) => state.cart.items).length;
 
   function handleOpenCartClick() {
@@ -27,11 +31,19 @@ export default function Header({ data }) {
 
   let modalActions = <button>Close</button>;
 
+  if (language === "AZ") {
+    modalActions = <button>Bağla</button>;
+  }
+
+  if (language === "RU") {
+    modalActions = <button>Закрыть</button>;
+  }
+
   if (cartQuantity > 0) {
     modalActions = (
       <>
         <button>Close</button>
-        <button>Checkout</button>
+        <button onClick={() => changeRoute("/Checkout")}>Checkout</button>
       </>
     );
   }
@@ -42,6 +54,10 @@ export default function Header({ data }) {
 
   function changeRoute(route) {
     navigate(`${route}`);
+  }
+
+  function handleChangeLanguage() {
+    dispatch(langActions.changeLanguage(select.current.value));
   }
 
   function searchProduct() {
@@ -103,13 +119,25 @@ export default function Header({ data }) {
             </a>
           </div>
           <div className="header__contacts">
-            <img src={wpImg} className="header__contacts-img"></img>
-            <h1 className="header__contacts-text">+994(50)3233642</h1>
-
-            <img src={homeImg} className="header__contacts-img"></img>
-            <h1 className="header__contacts-text">
-              Azerbaijan.Baku.Aga Neymatulla 79
-            </h1>
+            <select
+              ref={select}
+              onChange={handleChangeLanguage}
+              defaultValue={language}
+            >
+              <option value="EN">EN</option>
+              <option value="RU">RU</option>
+              <option value="AZ">AZ</option>
+            </select>
+            <div className="header__contacts-contact">
+              <img src={wpImg} className="header__contacts-img"></img>
+              <h1 className="header__contacts-text">+994(50)3233642</h1>
+            </div>
+            <div className="header__contacts-contact">
+              <img src={homeImg} className="header__contacts-img"></img>
+              <h1 className="header__contacts-text">
+                Azerbaijan.Baku.Aga Neymatulla 79
+              </h1>
+            </div>
           </div>
 
           <div className="header__buttons">
