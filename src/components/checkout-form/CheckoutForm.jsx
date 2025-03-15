@@ -3,6 +3,7 @@ import { useNavigation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../../store/storeSlices/cartSlice";
+import { translation } from "../../utils/translations";
 
 export default function CheckoutForm() {
   const items = useSelector((state) => state.cart.items);
@@ -10,6 +11,7 @@ export default function CheckoutForm() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const isSubmitting = navigation.state === "submitting";
+  const language = useSelector((state) => state.lang.language);
 
   function submitHandler(event) {
     event.preventDefault();
@@ -46,30 +48,30 @@ export default function CheckoutForm() {
   return (
     <form method="post" className="checkout-form" onSubmit={submitHandler}>
       <p>
-        <label htmlFor="userName">User Name</label>
+        <label htmlFor="userName">{translation[language].userName}</label>
         <input id="userName" type="text" name="userName" required />
       </p>
       <p>
-        <label htmlFor="number">Number</label>
+        <label htmlFor="number">{translation[language].number}</label>
         <input id="number" type="text" name="number" required />
       </p>
       <p>
-        <label htmlFor="email">Email</label>
+        <label htmlFor="email">{translation[language].email}</label>
         <input id="email" type="text" name="email" required />
       </p>
       <p>
-        <label htmlFor="description">Additional Information</label>
+        <label htmlFor="description">
+          {translation[language].additionalInformation}
+        </label>
         <textarea id="description" name="description" rows="5" required />
       </p>
       <div className="checkout-actions">
         <button disabled={isSubmitting}>
-          {isSubmitting ? "Submitting.." : "Proceed"}
+          {isSubmitting
+            ? translation[language].submitting
+            : translation[language].proceed}
         </button>
       </div>
     </form>
   );
-}
-
-export async function action({ request }) {
-  console.log(request.body);
 }

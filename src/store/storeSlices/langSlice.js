@@ -7,7 +7,7 @@ const changeLanguage = (state, action) => {
 };
 
 let initialState = {
-  language: "EN",
+  language: 0,
 };
 
 const data = JSON.parse(localStorage.getItem("language"));

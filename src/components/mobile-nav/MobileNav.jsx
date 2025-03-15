@@ -3,9 +3,12 @@ import OrderButton from "../order-button/OrderButton";
 import Brand from "../brand/Brand";
 import MenuButton from "../menu-button/MenuButton";
 import { useNavigate } from "react-router-dom";
+import { translation } from "../../utils/translations";
+import { useSelector } from "react-redux";
 
 export default function MobileNav({ isNavActive, closeNav, onCartClick }) {
   const navigate = useNavigate();
+  const language = useSelector((state) => state.lang.language);
   function changeRoute(route) {
     navigate(`${route}`);
   }
@@ -22,56 +25,56 @@ export default function MobileNav({ isNavActive, closeNav, onCartClick }) {
           onClick={() => changeRoute("/CarPaints")}
           closeNav={closeNav}
         >
-          Car Paints
+          {translation[language].carPaints}
         </MenuButton>
         <MenuButton
           classN="mobile-button"
           onClick={() => changeRoute("/AutoClear")}
           closeNav={closeNav}
         >
-          Auto Clear
+          {translation[language].avtoClear}
         </MenuButton>
         <MenuButton
           classN="mobile-button"
           onClick={() => changeRoute("/Primers")}
           closeNav={closeNav}
         >
-          Primers
+          {translation[language].primers}
         </MenuButton>
         <MenuButton
           classN="mobile-button"
           onClick={() => changeRoute("/Hardeners")}
           closeNav={closeNav}
         >
-          Hardeners
+          {translation[language].hardeners}
         </MenuButton>
         <MenuButton
           classN="mobile-button"
           onClick={() => changeRoute("/Polish")}
           closeNav={closeNav}
         >
-          Polish
+          {translation[language].polish}
         </MenuButton>
         <MenuButton
           classN="mobile-button"
           onClick={() => changeRoute("/Solvents")}
           closeNav={closeNav}
         >
-          Solvents
+          {translation[language].solvents}
         </MenuButton>
         <MenuButton
           classN="mobile-button"
           onClick={() => changeRoute("/Putties")}
           closeNav={closeNav}
         >
-          Putties
+          {translation[language].putties}
         </MenuButton>
         <MenuButton
           classN="mobile-button"
           onClick={() => changeRoute("/ColorMatching")}
           closeNav={closeNav}
         >
-          Color Matching
+          {translation[language].colorMatching}
         </MenuButton>
       </ol>
     </nav>

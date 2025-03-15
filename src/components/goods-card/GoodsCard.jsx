@@ -1,12 +1,14 @@
 import "./goodsCard.css";
 import MenuButton from "../menu-button/MenuButton";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../../store/storeSlices/cartSlice";
+import { translation } from "../../utils/translations";
 
 export default function ({ image, name, price, id, isProduct }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const language = useSelector((state) => state.lang.language);
 
   function handleNavigate() {
     dispatch(cartActions.selectItem(id));
@@ -37,7 +39,7 @@ export default function ({ image, name, price, id, isProduct }) {
             )
           }
         >
-          Add to cart
+          {translation[language].addToCart}
         </MenuButton>
       )}
     </div>

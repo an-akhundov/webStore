@@ -1,10 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../../store/storeSlices/cartSlice";
+import { translation } from "../../utils/translations";
 import "./cart.css";
 
 export default function Cart() {
   const items = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
+  const language = useSelector((state) => state.lang.language);
 
   const totalPrice = items.reduce(
     (acc, item) => acc + item.price * item.quantity,
@@ -59,7 +61,7 @@ export default function Cart() {
         </ul>
       )}
       <p id="cart-total-price">
-        Cart Total: <strong>{formattedTotalPrice}</strong>
+        {translation[language].cartTotal} <strong>{formattedTotalPrice}</strong>
       </p>
     </div>
   );

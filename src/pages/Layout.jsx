@@ -2,9 +2,12 @@ import { Outlet, useRouteLoaderData } from "react-router-dom";
 import Header from "../components/header/Header";
 import AdBlock from "../components/ad-block/AdBlock";
 import Footer from "../components/footer/Footer";
+import { translation } from "../utils/translations";
+import { useSelector } from "react-redux";
 
 export default function Layout() {
   const data = useRouteLoaderData("root");
+  const language = useSelector((state) => state.lang.language);
 
   return (
     <>
@@ -23,9 +26,12 @@ export async function loader() {
   const response = await fetch("http://localhost:3000/goods");
 
   if (!response.ok) {
-    throw new Response(JSON.stringify({ message: "Could not fetch data!" }), {
-      status: 500,
-    });
+    throw new Response(
+      JSON.stringify({ message: translation[language].couldNotFetchData }),
+      {
+        status: 500,
+      }
+    );
   } else {
     const resData = await response.json();
     return resData;

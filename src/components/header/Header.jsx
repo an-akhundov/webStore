@@ -14,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 import ferImage from "../../assets/fer.webp";
 import lambaImg from "../../assets/lamba.jpg";
 import { useDispatch, useSelector } from "react-redux";
+import { translation } from "../../utils/translations.js";
 
 export default function Header({ data }) {
   const [mobileNavActive, setMobileNavActive] = useState(false);
@@ -23,27 +24,25 @@ export default function Header({ data }) {
   const modal = useRef();
   const search = useRef();
   const select = useRef();
+  const languageIndex = select.current
+    ? select.current.value
+    : JSON.parse(localStorage.getItem("language")).language;
+
   const cartQuantity = useSelector((state) => state.cart.items).length;
 
   function handleOpenCartClick() {
     modal.current.open();
   }
 
-  let modalActions = <button>Close</button>;
-
-  if (language === "AZ") {
-    modalActions = <button>Bağla</button>;
-  }
-
-  if (language === "RU") {
-    modalActions = <button>Закрыть</button>;
-  }
+  let modalActions = <button>{translation[languageIndex].close}</button>;
 
   if (cartQuantity > 0) {
     modalActions = (
       <>
-        <button>Close</button>
-        <button onClick={() => changeRoute("/Checkout")}>Checkout</button>
+        <button>{translation[languageIndex].close}</button>
+        <button onClick={() => changeRoute("/Checkout")}>
+          {translation[languageIndex].checkOut}
+        </button>
       </>
     );
   }
@@ -96,7 +95,11 @@ export default function Header({ data }) {
         id="backdrop"
         onClick={handleToggleButton}
       ></div>
-      <CartModal ref={modal} title="Your Cart" actions={modalActions} />
+      <CartModal
+        ref={modal}
+        title={translation[languageIndex].yourCart}
+        actions={modalActions}
+      />
       <MobileNav
         onCartClick={handleOpenCartClick}
         isNavActive={mobileNavActive}
@@ -124,9 +127,9 @@ export default function Header({ data }) {
               onChange={handleChangeLanguage}
               defaultValue={language}
             >
-              <option value="EN">EN</option>
-              <option value="RU">RU</option>
-              <option value="AZ">AZ</option>
+              <option value={0}>EN</option>
+              <option value={1}>RU</option>
+              <option value={2}>AZ</option>
             </select>
             <div className="header__contacts-contact">
               <img src={wpImg} className="header__contacts-img"></img>
@@ -158,49 +161,49 @@ export default function Header({ data }) {
               classN="header-button"
               onClick={() => changeRoute("/CarPaints")}
             >
-              Car Paints
+              {translation[languageIndex].carPaints}
             </MenuButton>
             <MenuButton
               classN="header-button"
               onClick={() => changeRoute("/AutoClear")}
             >
-              Auto Clear
+              {translation[languageIndex].avtoClear}
             </MenuButton>
             <MenuButton
               classN="header-button"
               onClick={() => changeRoute("/Primers")}
             >
-              Primers
+              {translation[languageIndex].primers}
             </MenuButton>
             <MenuButton
               classN="header-button"
               onClick={() => changeRoute("/Hardeners")}
             >
-              Hardeners
+              {translation[languageIndex].hardeners}
             </MenuButton>
             <MenuButton
               classN="header-button"
               onClick={() => changeRoute("/Polish")}
             >
-              Polish
+              {translation[languageIndex].polish}
             </MenuButton>
             <MenuButton
               classN="header-button"
               onClick={() => changeRoute("/Solvents")}
             >
-              Solvents
+              {translation[languageIndex].solvents}
             </MenuButton>
             <MenuButton
               classN="header-button"
               onClick={() => changeRoute("/Putties")}
             >
-              Putties
+              {translation[languageIndex].putties}
             </MenuButton>
             <MenuButton
               classN="header-button"
               onClick={() => changeRoute("/ColorMatching")}
             >
-              Color Matching
+              {translation[languageIndex].colorMatching}
             </MenuButton>
           </nav>
         </div>
