@@ -15,6 +15,7 @@ import ferImage from "../../assets/fer.webp";
 import lambaImg from "../../assets/lamba.jpg";
 import { useDispatch, useSelector } from "react-redux";
 import { translation } from "../../utils/translations.js";
+import { NavLink } from "react-router-dom";
 
 export default function Header({ data }) {
   const [mobileNavActive, setMobileNavActive] = useState(false);
@@ -24,6 +25,7 @@ export default function Header({ data }) {
   const modal = useRef();
   const search = useRef();
   const select = useRef();
+
   const languageIndex = select.current
     ? select.current.value
     : JSON.parse(localStorage.getItem("language")).language;
@@ -157,54 +159,100 @@ export default function Header({ data }) {
           </div>
 
           <nav className="header__menu">
-            <MenuButton
-              classN="header-button"
-              onClick={() => changeRoute("/CarPaints")}
-            >
-              {translation[languageIndex].carPaints}
-            </MenuButton>
-            <MenuButton
-              classN="header-button"
-              onClick={() => changeRoute("/AutoClear")}
-            >
-              {translation[languageIndex].avtoClear}
-            </MenuButton>
-            <MenuButton
-              classN="header-button"
-              onClick={() => changeRoute("/Primers")}
-            >
-              {translation[languageIndex].primers}
-            </MenuButton>
-            <MenuButton
-              classN="header-button"
-              onClick={() => changeRoute("/Hardeners")}
-            >
-              {translation[languageIndex].hardeners}
-            </MenuButton>
-            <MenuButton
-              classN="header-button"
-              onClick={() => changeRoute("/Polish")}
-            >
-              {translation[languageIndex].polish}
-            </MenuButton>
-            <MenuButton
-              classN="header-button"
-              onClick={() => changeRoute("/Solvents")}
-            >
-              {translation[languageIndex].solvents}
-            </MenuButton>
-            <MenuButton
-              classN="header-button"
-              onClick={() => changeRoute("/Putties")}
-            >
-              {translation[languageIndex].putties}
-            </MenuButton>
-            <MenuButton
-              classN="header-button"
-              onClick={() => changeRoute("/ColorMatching")}
-            >
-              {translation[languageIndex].colorMatching}
-            </MenuButton>
+            <NavLink to="CarPaints">
+              {({ isActive }) => (
+                <MenuButton
+                  classN="header-button"
+                  onClick={() => changeRoute("CarPaints")}
+                  active={isActive}
+                >
+                  {translation[languageIndex].carPaints}
+                </MenuButton>
+              )}
+            </NavLink>
+            <NavLink to="AutoClear">
+              {({ isActive }) => (
+                <MenuButton
+                  classN="header-button"
+                  onClick={() => changeRoute("AutoClear")}
+                  active={isActive}
+                >
+                  {translation[languageIndex].avtoClear}
+                </MenuButton>
+              )}
+            </NavLink>
+
+            <NavLink to="Primers">
+              {({ isActive }) => (
+                <MenuButton
+                  classN="header-button"
+                  onClick={() => changeRoute("Primers")}
+                  active={isActive}
+                >
+                  {translation[languageIndex].primers}
+                </MenuButton>
+              )}
+            </NavLink>
+
+            <NavLink to="Hardeners">
+              {({ isActive }) => (
+                <MenuButton
+                  classN="header-button"
+                  onClick={() => changeRoute("Hardeners")}
+                  active={isActive}
+                >
+                  {translation[languageIndex].hardeners}
+                </MenuButton>
+              )}
+            </NavLink>
+
+            <NavLink to="Polish">
+              {({ isActive }) => (
+                <MenuButton
+                  classN="header-button"
+                  onClick={() => changeRoute("Polish")}
+                  active={isActive}
+                >
+                  {translation[languageIndex].polish}
+                </MenuButton>
+              )}
+            </NavLink>
+
+            <NavLink to="Solvents">
+              {({ isActive }) => (
+                <MenuButton
+                  classN="header-button"
+                  onClick={() => changeRoute("Solvents")}
+                  active={isActive}
+                >
+                  {translation[languageIndex].solvents}
+                </MenuButton>
+              )}
+            </NavLink>
+
+            <NavLink to="Putties">
+              {({ isActive }) => (
+                <MenuButton
+                  classN="header-button"
+                  onClick={() => changeRoute("Putties")}
+                  active={isActive}
+                >
+                  {translation[languageIndex].putties}
+                </MenuButton>
+              )}
+            </NavLink>
+
+            <NavLink to="ColorMatching">
+              {({ isActive }) => (
+                <MenuButton
+                  classN="header-button"
+                  onClick={() => changeRoute("ColorMatching")}
+                  active={isActive}
+                >
+                  {translation[languageIndex].colorMatching}
+                </MenuButton>
+              )}
+            </NavLink>
           </nav>
         </div>
         <img src={lambaImg} alt="" className="header__image" />

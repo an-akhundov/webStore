@@ -1,54 +1,321 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { lazy } from "react";
 import "./App.css";
-import Layout from "./pages/Layout";
-import MainPage from "./pages/MainPage";
-import CarPaints from "./pages/CarPaints";
-import AutoClear from "./pages/AutoClear";
-import Primers from "./pages/Primers";
-import Hardeners from "./pages/Hardeners";
-import Polish from "./pages/Polish";
-import Solvents from "./pages/Solvents";
-import Putties from "./pages/Putties";
-import ColorMatching from "./pages/ColorMatching,";
-import ProductInfo from "./pages/ProductInfo";
-import Admin from "./pages/Admin";
-import ErrorPage from "./pages/Error";
-import SearchPage from "./pages/SearchPage";
-import CheckoutPage from "./pages/Checkout";
-import { loader } from "./pages/Layout";
-import { loader as adminLoader } from "./pages/Admin";
+import { Suspense } from "react";
+
+const Layout = lazy(() => import("./pages/Layout"));
+const MainPage = lazy(() => import("./pages/MainPage"));
+const CarPaints = lazy(() => import("./pages/CarPaints"));
+const AutoClear = lazy(() => import("./pages/AutoClear"));
+const Primers = lazy(() => import("./pages/Primers"));
+const Hardeners = lazy(() => import("./pages/Hardeners"));
+const Polish = lazy(() => import("./pages/Polish"));
+const Solvents = lazy(() => import("./pages/Solvents"));
+const Putties = lazy(() => import("./pages/Putties"));
+const ColorMatching = lazy(() => import("./pages/ColorMatching"));
+const SearchPage = lazy(() => import("./pages/SearchPage"));
+const CheckoutPage = lazy(() => import("./pages/Checkout"));
+const ErrorPage = lazy(() => import("./pages/Error"));
+const ProductInfo = lazy(() => import("./pages/ProductInfo"));
+const Admin = lazy(() => import("./pages/Admin"));
 
 function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Layout />,
-      errorElement: <ErrorPage />,
-      loader: loader,
+      element: (
+        <Suspense
+          fallback={
+            <div className="main-page">
+              <p>Loading...</p>
+            </div>
+          }
+        >
+          <Layout />
+        </Suspense>
+      ),
+      errorElement: (
+        <Suspense
+          fallback={
+            <div className="main-page">
+              <p>Loading...</p>
+            </div>
+          }
+        >
+          <ErrorPage />
+        </Suspense>
+      ),
+      loader: () => import("./pages/Layout").then((module) => module.loader()),
       id: "root",
       children: [
-        { index: true, element: <MainPage /> },
+        {
+          index: true,
+          element: (
+            <Suspense
+              fallback={
+                <div className="main-page">
+                  <p>Loading...</p>
+                </div>
+              }
+            >
+              <MainPage />
+            </Suspense>
+          ),
+        },
         {
           path: "CarPaints",
-          element: <CarPaints />,
+          element: (
+            <Suspense
+              fallback={
+                <div className="main-page">
+                  <p>Loading...</p>
+                </div>
+              }
+            >
+              <CarPaints />
+            </Suspense>
+          ),
         },
-        { path: "AutoClear", element: <AutoClear /> },
-        { path: "Primers", element: <Primers /> },
-        { path: "Hardeners", element: <Hardeners /> },
-        { path: "Polish", element: <Polish /> },
-        { path: "Solvents", element: <Solvents /> },
-        { path: "Putties", element: <Putties /> },
-        { path: "Search", element: <SearchPage /> },
-        { path: "ColorMatching", element: <ColorMatching /> },
-        { path: "Checkout", element: <CheckoutPage /> },
-        { path: "CarPaints/:id", element: <ProductInfo /> },
-        { path: "AutoClear/:id", element: <ProductInfo /> },
-        { path: "Primers/:id", element: <ProductInfo /> },
-        { path: "Hardeners/:id", element: <ProductInfo /> },
-        { path: "Polish/:id", element: <ProductInfo /> },
-        { path: "Solvents/:id", element: <ProductInfo /> },
-        { path: "Putties/:id", element: <ProductInfo /> },
-        { path: "Admin", element: <Admin />, loader: adminLoader },
+        {
+          path: "AutoClear",
+          element: (
+            <Suspense
+              fallback={
+                <div className="main-page">
+                  <p>Loading...</p>
+                </div>
+              }
+            >
+              <AutoClear />
+            </Suspense>
+          ),
+        },
+        {
+          path: "Primers",
+          element: (
+            <Suspense
+              fallback={
+                <div className="main-page">
+                  <p>Loading...</p>
+                </div>
+              }
+            >
+              <Primers />
+            </Suspense>
+          ),
+        },
+        {
+          path: "Hardeners",
+          element: (
+            <Suspense
+              fallback={
+                <div className="main-page">
+                  <p>Loading...</p>
+                </div>
+              }
+            >
+              <Hardeners />
+            </Suspense>
+          ),
+        },
+        {
+          path: "Polish",
+          element: (
+            <Suspense
+              fallback={
+                <div className="main-page">
+                  <p>Loading...</p>
+                </div>
+              }
+            >
+              <Polish />
+            </Suspense>
+          ),
+        },
+        {
+          path: "Solvents",
+          element: (
+            <Suspense
+              fallback={
+                <div className="main-page">
+                  <p>Loading...</p>
+                </div>
+              }
+            >
+              <Solvents />
+            </Suspense>
+          ),
+        },
+        {
+          path: "Putties",
+          element: (
+            <Suspense
+              fallback={
+                <div className="main-page">
+                  <p>Loading...</p>
+                </div>
+              }
+            >
+              <Putties />
+            </Suspense>
+          ),
+        },
+        {
+          path: "Search",
+          element: (
+            <Suspense
+              fallback={
+                <div className="main-page">
+                  <p>Loading...</p>
+                </div>
+              }
+            >
+              <SearchPage />
+            </Suspense>
+          ),
+        },
+        {
+          path: "ColorMatching",
+          element: (
+            <Suspense
+              fallback={
+                <div className="main-page">
+                  <p>Loading...</p>
+                </div>
+              }
+            >
+              <ColorMatching />
+            </Suspense>
+          ),
+        },
+        {
+          path: "Checkout",
+          element: (
+            <Suspense
+              fallback={
+                <div className="main-page">
+                  <p>Loading...</p>
+                </div>
+              }
+            >
+              <CheckoutPage />
+            </Suspense>
+          ),
+        },
+        {
+          path: "CarPaints/:id",
+          element: (
+            <Suspense
+              fallback={
+                <div className="main-page">
+                  <p>Loading...</p>
+                </div>
+              }
+            >
+              <ProductInfo />
+            </Suspense>
+          ),
+        },
+        {
+          path: "AutoClear/:id",
+          element: (
+            <Suspense
+              fallback={
+                <div className="main-page">
+                  <p>Loading...</p>
+                </div>
+              }
+            >
+              <ProductInfo />
+            </Suspense>
+          ),
+        },
+        {
+          path: "Primers/:id",
+          element: (
+            <Suspense
+              fallback={
+                <div className="main-page">
+                  <p>Loading...</p>
+                </div>
+              }
+            >
+              <ProductInfo />
+            </Suspense>
+          ),
+        },
+        {
+          path: "Hardeners/:id",
+          element: (
+            <Suspense
+              fallback={
+                <div className="main-page">
+                  <p>Loading...</p>
+                </div>
+              }
+            >
+              <ProductInfo />
+            </Suspense>
+          ),
+        },
+        {
+          path: "Polish/:id",
+          element: (
+            <Suspense
+              fallback={
+                <div className="main-page">
+                  <p>Loading...</p>
+                </div>
+              }
+            >
+              <ProductInfo />
+            </Suspense>
+          ),
+        },
+        {
+          path: "Solvents/:id",
+          element: (
+            <Suspense
+              fallback={
+                <div className="main-page">
+                  <p>Loading...</p>
+                </div>
+              }
+            >
+              <ProductInfo />
+            </Suspense>
+          ),
+        },
+        {
+          path: "Putties/:id",
+          element: (
+            <Suspense
+              fallback={
+                <div className="main-page">
+                  <p>Loading...</p>
+                </div>
+              }
+            >
+              <ProductInfo />
+            </Suspense>
+          ),
+        },
+        {
+          path: "Admin",
+          element: (
+            <Suspense
+              fallback={
+                <div className="main-page">
+                  <p>Loading...</p>
+                </div>
+              }
+            >
+              <Admin />
+            </Suspense>
+          ),
+          loader: () =>
+            import("./pages/Admin").then((module) => module.loader()),
+        },
       ],
     },
   ]);

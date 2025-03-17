@@ -4,6 +4,7 @@ export default function MenuButton({
   children,
   classN,
   onClick,
+  active = false,
   closeNav = () => {},
 }) {
   function handleClick() {
@@ -11,10 +12,11 @@ export default function MenuButton({
     closeNav();
   }
 
+  const classes = active ? "header-button_active" : undefined;
+
   return (
-    <li className={classN} onClick={handleClick}>
+    <li className={`${classes} ${classN}`} onClick={handleClick}>
       {children}
-      {/* <Link to={`${route}`}>{name}</Link> */}
     </li>
   );
 }
