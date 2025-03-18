@@ -28,9 +28,9 @@ export default function Header({ data }) {
 
   const languageIndex = select.current
     ? select.current.value
-    : JSON.parse(localStorage.getItem("language")).language
+    : JSON.parse(localStorage.getItem("language"))
     ? JSON.parse(localStorage.getItem("language")).language
-    : "EN";
+    : 0;
 
   const cartQuantity = useSelector((state) => state.cart.items).length;
 
