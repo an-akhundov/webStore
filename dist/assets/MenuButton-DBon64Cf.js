@@ -1,0 +1,1 @@
+import{j as c}from"./index-DJIbHZap.js";function r({children:t,classN:n,onClick:s,active:e=!1,closeNav:o=()=>{}}){function a(){s(),o()}const i=e?"header-button_active":void 0;return c.jsx("li",{className:`${i} ${n}`,onClick:a,children:t})}export{r as M};
