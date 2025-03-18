@@ -17,7 +17,7 @@ export default function Admin() {
 }
 
 export async function loader() {
-  const response = await fetch("http://localhost:3000/admin");
+  const response = await fetch("https://avtoboya-api.onrender.com/admin");
 
   if (!response.ok) {
     throw new Response(
@@ -28,7 +28,9 @@ export async function loader() {
     );
   } else {
     const adminData = await response.json();
-    const ordersResponse = await fetch("http://localhost:3000/orders");
+    const ordersResponse = await fetch(
+      "https://avtoboya-api.onrender.com/orders"
+    );
     if (!ordersResponse.ok) {
       throw new Response(
         JSON.stringify({ message: "Could not fetch admin credentials!" }),

@@ -7,6 +7,7 @@ const store = configureStore({
     cart: cartReducer,
     lang: langReducer,
   },
+  devTools: false,
 });
 
 export default store;

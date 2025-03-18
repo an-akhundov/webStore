@@ -18,7 +18,7 @@ export default function ({ image, name, price, id, isProduct }) {
   return (
     <div className="card">
       <img
-        src={`http://localhost:3000/${image}`}
+        src={`https://avtoboya-api.onrender.com/${image}`}
         alt=""
         className="card__img"
         onClick={isProduct ? handleNavigate : undefined}

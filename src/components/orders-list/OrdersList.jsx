@@ -20,9 +20,12 @@ export default function OrderList({ orders }) {
   }
 
   async function handleDelete(id) {
-    const response = await fetch("http://localhost:3000/orders/" + id, {
-      method: "DELETE",
-    });
+    const response = await fetch(
+      "https://avtoboya-api.onrender.com/orders/" + id,
+      {
+        method: "DELETE",
+      }
+    );
 
     if (!response.ok) {
       return new Response(

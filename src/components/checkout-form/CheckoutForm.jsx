@@ -30,7 +30,7 @@ export default function CheckoutForm() {
       },
     };
 
-    const response = fetch("http://localhost:3000/orders", {
+    const response = fetch("https://avtoboya-api.onrender.com/orders", {
       method: "POST",
       headers: {
         "Content-type": "application/json",

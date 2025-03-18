@@ -50,7 +50,7 @@ export default function CardInfo({ product }) {
   return (
     <div className="card-info">
       <img
-        src={`http://localhost:3000/${product.image}`}
+        src={`https://avtoboya-api.onrender.com/${product.image}`}
         alt=""
         className="card-info__image"
       />
