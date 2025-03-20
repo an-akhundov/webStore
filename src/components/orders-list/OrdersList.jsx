@@ -21,7 +21,7 @@ export default function OrderList({ orders }) {
 
   async function handleDelete(id) {
     const response = await fetch(
-      "https://avtoboya-api.onrender.com/orders/" + id,
+      "https://avtoboya-api-17038851195f.herokuapp.com/orders/" + id,
       {
         method: "DELETE",
       }

@@ -23,7 +23,9 @@ export default function Layout() {
 }
 
 export async function loader() {
-  const response = await fetch("https://avtoboya-api.onrender.com/goods");
+  const response = await fetch(
+    "https://avtoboya-api-17038851195f.herokuapp.com/goods"
+  );
 
   if (!response.ok) {
     throw new Response(

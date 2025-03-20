@@ -30,13 +30,16 @@ export default function CheckoutForm() {
       },
     };
 
-    const response = fetch("https://avtoboya-api.onrender.com/orders", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(fetchData),
-    });
+    const response = fetch(
+      "https://avtoboya-api-17038851195f.herokuapp.com/orders",
+      {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(fetchData),
+      }
+    );
 
     // if (!response.ok) {
     //   return new Response({ message: "Could not add order" }, { status: 500 });

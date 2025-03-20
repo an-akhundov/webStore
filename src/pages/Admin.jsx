@@ -17,7 +17,7 @@ export default function Admin() {
 }
 
 export async function loader() {
-  const response = await fetch("https://avtoboya-api.onrender.com/admin");
+  const response = await fetch("https://avtoboya-api-17038851195f.herokuapp.com/admin");
 
   if (!response.ok) {
     throw new Response(
@@ -29,7 +29,7 @@ export async function loader() {
   } else {
     const adminData = await response.json();
     const ordersResponse = await fetch(
-      "https://avtoboya-api.onrender.com/orders"
+      "https://avtoboya-api-17038851195f.herokuapp.com/orders"
     );
     if (!ordersResponse.ok) {
       throw new Response(
