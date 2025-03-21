@@ -50,7 +50,7 @@ export default function CardInfo({ product }) {
   return (
     <div className="card-info">
       <img
-        src={`https://avtoboya-api-17038851195f.herokuapp.com/${product.image}`}
+        src={`https://drive.google.com/thumbnail?id=${product.image}&sz=w1000`}
         alt=""
         className="card-info__image"
       />
