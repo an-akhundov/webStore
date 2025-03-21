@@ -18,7 +18,7 @@ export default function ({ image, name, price, id, isProduct }) {
   return (
     <div className="card">
       <img
-        src={`https://avtoboya-api-17038851195f.herokuapp.com/${image}`}
+        src={`https://drive.google.com/thumbnail?id=${image}&sz=w1000`}
         alt=""
         className="card__img"
         onClick={isProduct ? handleNavigate : undefined}
