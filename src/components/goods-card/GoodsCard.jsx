@@ -5,13 +5,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../../store/storeSlices/cartSlice";
 import { translation } from "../../utils/translations";
 
-export default function ({ image, name, price, id, isProduct }) {
+export default function ({ image, name, price, id, isProduct, isMain }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const language = useSelector((state) => state.lang.language);
+  const rootName = id.substring(0, id.indexOf("-"));
 
   function handleNavigate() {
     dispatch(cartActions.selectItem(id));
+    if (isMain) {
+      navigate(`${rootName}/${id}`);
+      return;
+    }
     navigate(`${id}`);
   }
 

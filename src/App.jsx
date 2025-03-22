@@ -63,7 +63,7 @@ function App() {
           ),
         },
         {
-          path: "CarPaints",
+          path: "paint",
           element: (
             <Suspense
               fallback={
@@ -77,7 +77,7 @@ function App() {
           ),
         },
         {
-          path: "AutoClear",
+          path: "clear",
           element: (
             <Suspense
               fallback={
@@ -91,7 +91,7 @@ function App() {
           ),
         },
         {
-          path: "Primers",
+          path: "primer",
           element: (
             <Suspense
               fallback={
@@ -105,7 +105,7 @@ function App() {
           ),
         },
         {
-          path: "Hardeners",
+          path: "hardener",
           element: (
             <Suspense
               fallback={
@@ -119,7 +119,7 @@ function App() {
           ),
         },
         {
-          path: "Polish",
+          path: "polish",
           element: (
             <Suspense
               fallback={
@@ -133,7 +133,7 @@ function App() {
           ),
         },
         {
-          path: "Solvents",
+          path: "solvent",
           element: (
             <Suspense
               fallback={
@@ -147,7 +147,7 @@ function App() {
           ),
         },
         {
-          path: "Putties",
+          path: "putty",
           element: (
             <Suspense
               fallback={
@@ -175,7 +175,7 @@ function App() {
           ),
         },
         {
-          path: "ColorMatching",
+          path: "matching",
           element: (
             <Suspense
               fallback={
@@ -203,7 +203,7 @@ function App() {
           ),
         },
         {
-          path: "CarPaints/:id",
+          path: "paint/:id",
           element: (
             <Suspense
               fallback={
@@ -217,7 +217,7 @@ function App() {
           ),
         },
         {
-          path: "AutoClear/:id",
+          path: "clear/:id",
           element: (
             <Suspense
               fallback={
@@ -231,7 +231,7 @@ function App() {
           ),
         },
         {
-          path: "Primers/:id",
+          path: "primer/:id",
           element: (
             <Suspense
               fallback={
@@ -245,7 +245,7 @@ function App() {
           ),
         },
         {
-          path: "Hardeners/:id",
+          path: "hardener/:id",
           element: (
             <Suspense
               fallback={
@@ -259,7 +259,7 @@ function App() {
           ),
         },
         {
-          path: "Polish/:id",
+          path: "polish/:id",
           element: (
             <Suspense
               fallback={
@@ -273,7 +273,7 @@ function App() {
           ),
         },
         {
-          path: "Solvents/:id",
+          path: "solvent/:id",
           element: (
             <Suspense
               fallback={
@@ -287,7 +287,7 @@ function App() {
           ),
         },
         {
-          path: "Putties/:id",
+          path: "putty/:id",
           element: (
             <Suspense
               fallback={

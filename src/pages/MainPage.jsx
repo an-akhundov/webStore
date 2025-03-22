@@ -27,7 +27,7 @@ export default function MainPage() {
       <Slider sliderImages={sliderImages} />
       <Shelf>
         <SectionName text={translation[language].bestChoices} />
-        <Goods goods={randomGoods} isProduct />
+        <Goods goods={randomGoods} isProduct isMain />
       </Shelf>
     </div>
   );

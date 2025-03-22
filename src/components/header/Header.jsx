@@ -161,22 +161,22 @@ export default function Header({ data }) {
           </div>
 
           <nav className="header__menu">
-            <NavLink to="CarPaints">
+            <NavLink to="paint">
               {({ isActive }) => (
                 <MenuButton
                   classN="header-button"
-                  onClick={() => changeRoute("CarPaints")}
+                  onClick={() => changeRoute("paint")}
                   active={isActive}
                 >
                   {translation[languageIndex].carPaints}
                 </MenuButton>
               )}
             </NavLink>
-            <NavLink to="AutoClear">
+            <NavLink to="clear">
               {({ isActive }) => (
                 <MenuButton
                   classN="header-button"
-                  onClick={() => changeRoute("AutoClear")}
+                  onClick={() => changeRoute("clear")}
                   active={isActive}
                 >
                   {translation[languageIndex].avtoClear}
@@ -184,11 +184,11 @@ export default function Header({ data }) {
               )}
             </NavLink>
 
-            <NavLink to="Primers">
+            <NavLink to="primer">
               {({ isActive }) => (
                 <MenuButton
                   classN="header-button"
-                  onClick={() => changeRoute("Primers")}
+                  onClick={() => changeRoute("primer")}
                   active={isActive}
                 >
                   {translation[languageIndex].primers}
@@ -196,11 +196,11 @@ export default function Header({ data }) {
               )}
             </NavLink>
 
-            <NavLink to="Hardeners">
+            <NavLink to="hardener">
               {({ isActive }) => (
                 <MenuButton
                   classN="header-button"
-                  onClick={() => changeRoute("Hardeners")}
+                  onClick={() => changeRoute("hardener")}
                   active={isActive}
                 >
                   {translation[languageIndex].hardeners}
@@ -208,11 +208,11 @@ export default function Header({ data }) {
               )}
             </NavLink>
 
-            <NavLink to="Polish">
+            <NavLink to="polish">
               {({ isActive }) => (
                 <MenuButton
                   classN="header-button"
-                  onClick={() => changeRoute("Polish")}
+                  onClick={() => changeRoute("polish")}
                   active={isActive}
                 >
                   {translation[languageIndex].polish}
@@ -220,11 +220,11 @@ export default function Header({ data }) {
               )}
             </NavLink>
 
-            <NavLink to="Solvents">
+            <NavLink to="solvent">
               {({ isActive }) => (
                 <MenuButton
                   classN="header-button"
-                  onClick={() => changeRoute("Solvents")}
+                  onClick={() => changeRoute("solvent")}
                   active={isActive}
                 >
                   {translation[languageIndex].solvents}
@@ -232,11 +232,11 @@ export default function Header({ data }) {
               )}
             </NavLink>
 
-            <NavLink to="Putties">
+            <NavLink to="putty">
               {({ isActive }) => (
                 <MenuButton
                   classN="header-button"
-                  onClick={() => changeRoute("Putties")}
+                  onClick={() => changeRoute("putty")}
                   active={isActive}
                 >
                   {translation[languageIndex].putties}
@@ -244,11 +244,11 @@ export default function Header({ data }) {
               )}
             </NavLink>
 
-            <NavLink to="ColorMatching">
+            <NavLink to="matching">
               {({ isActive }) => (
                 <MenuButton
                   classN="header-button"
-                  onClick={() => changeRoute("ColorMatching")}
+                  onClick={() => changeRoute("matching")}
                   active={isActive}
                 >
                   {translation[languageIndex].colorMatching}

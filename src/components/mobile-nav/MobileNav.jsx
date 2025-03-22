@@ -22,56 +22,56 @@ export default function MobileNav({ isNavActive, closeNav, onCartClick }) {
       <ol className="mobile-nav__items">
         <MenuButton
           classN="mobile-button"
-          onClick={() => changeRoute("/CarPaints")}
+          onClick={() => changeRoute("/paint")}
           closeNav={closeNav}
         >
           {translation[language].carPaints}
         </MenuButton>
         <MenuButton
           classN="mobile-button"
-          onClick={() => changeRoute("/AutoClear")}
+          onClick={() => changeRoute("/clear")}
           closeNav={closeNav}
         >
           {translation[language].avtoClear}
         </MenuButton>
         <MenuButton
           classN="mobile-button"
-          onClick={() => changeRoute("/Primers")}
+          onClick={() => changeRoute("/primer")}
           closeNav={closeNav}
         >
           {translation[language].primers}
         </MenuButton>
         <MenuButton
           classN="mobile-button"
-          onClick={() => changeRoute("/Hardeners")}
+          onClick={() => changeRoute("/hardener")}
           closeNav={closeNav}
         >
           {translation[language].hardeners}
         </MenuButton>
         <MenuButton
           classN="mobile-button"
-          onClick={() => changeRoute("/Polish")}
+          onClick={() => changeRoute("/polish")}
           closeNav={closeNav}
         >
           {translation[language].polish}
         </MenuButton>
         <MenuButton
           classN="mobile-button"
-          onClick={() => changeRoute("/Solvents")}
+          onClick={() => changeRoute("/solvent")}
           closeNav={closeNav}
         >
           {translation[language].solvents}
         </MenuButton>
         <MenuButton
           classN="mobile-button"
-          onClick={() => changeRoute("/Putties")}
+          onClick={() => changeRoute("/putty")}
           closeNav={closeNav}
         >
           {translation[language].putties}
         </MenuButton>
         <MenuButton
           classN="mobile-button"
-          onClick={() => changeRoute("/ColorMatching")}
+          onClick={() => changeRoute("/matching")}
           closeNav={closeNav}
         >
           {translation[language].colorMatching}
